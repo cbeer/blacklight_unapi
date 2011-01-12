@@ -1,0 +1,55 @@
+BlacklightUnapi: unAPI provider plugin for Blacklight
+
+= Description
+
+The BlacklightUnapi plugin provides an unapi endpoint for Blacklight records. unAPI is a tiny HTTP API for the few basic operations necessary to copy discrete, identified content from any kind of web application.
+
+= Requirements
+
+A Rails app using the Blacklight plugin (tested against version 2.7).
+
+= Installation
+
+This is a plugin, not a gem (because the structure was copied from existing plugins; in theory, it should be possible to make this a gem in the future).
+
+ A couple different ways to get the source into your vendor/plugins directory. 
+
+Go into your application directory, and run: 
+
+./script/plugin install git://github.com/cbeer/blacklight_unapi.git
+
+Later you can run ./script/plugin update blacklight_unapi if you like. 
+
+Requires git installed on your system. There are other ways to get the plugin in there too.
+
+OR
+cd $your_app/vendor/plugins
+git clone git://github.com/cbeer/blacklight_unapi.git 
+
+= Configuration
+
+
+== Injection
+
+This plugin assumes it is in a Blacklight Rails app, uses Blacklight methods, Rails methods, and standard ruby module includes to inject it's behaviors into the app.  
+
+You can turn off this injection if you like, although it will make the plugin less (or non-) functional unless you manually do similar injection. See lib/blacklight_unapi.rb#inject! to see exactly what's going on. 
+
+In any initializer, you can set:
+
+  BlacklightUnapi.omit_inject = true
+
+to turn off all injection. The plugin will be completely non-functional if you do this, of course. But perhaps you could try to re-use some of it's classes in a non-Blacklight, highly hacked Blacklight, or even non-Rails application this way. 
+
+You can also turn off injection of individual components, which could be more useful:
+   
+  BlacklightUnapi.omit_inject = {
+    :autodiscovery_link => false,  
+    :controller_mixin => false
+  }
+
+= Tests
+
+There are none. This is bad I know, sorry. 
+
+
