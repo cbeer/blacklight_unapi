@@ -33,4 +33,5 @@ module BlacklightUnapi::ControllerOverride
   def unapi_config   
     Blacklight.config[:unapi] || {}
   end
+
 end

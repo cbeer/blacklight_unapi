@@ -15,6 +15,16 @@ module BlacklightUnapi
         CatalogController.send(:include, BlacklightUnapi::ControllerOverride) unless CatalogController.include?(BlacklightUnapi::ControllerOverride)
       end
 
+     unless omit_inject[:utodiscovery_link]
+       CatalogController.before_filter do |controller|
+         safe_arr_add(controller.extra_head_content, controller.send(:render_to_string, :partial => 'unapi/autodiscovery_link'))
+       end
+     end
+
     end
+  end
+
+  def self.safe_arr_add(array, element)
+    array << element unless array.include?(element)
   end
 end
