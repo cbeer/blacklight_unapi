@@ -16,7 +16,7 @@ module BlacklightUnapi
       end
 
      unless omit_inject[:autodiscovery_link]
-       CatalogController.before_filter do |controller|
+       CatalogController.before_filter :only => [:index, :show] do |controller|
          safe_arr_add(controller.extra_head_content, controller.send(:render_to_string, :partial => 'unapi/autodiscovery_link'))
        end
      end
