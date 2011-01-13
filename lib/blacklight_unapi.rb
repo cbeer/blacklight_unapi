@@ -15,6 +15,10 @@ module BlacklightUnapi
         CatalogController.send(:include, BlacklightUnapi::ControllerOverride) unless CatalogController.include?(BlacklightUnapi::ControllerOverride)
       end
 
+     unless omit_inject[:helper_mixin]
+        CatalogController.add_template_helper(BlacklightUnapi::CatalogHelperOverride) unless CatalogController.master_helper_module.include?(BlacklightUnapi::CatalogHelperOverride)
+      end
+
      unless omit_inject[:autodiscovery_link]
        CatalogController.before_filter :only => [:index, :show] do |controller|
          safe_arr_add(controller.extra_head_content, controller.send(:render_to_string, :partial => 'unapi/autodiscovery_link'))
