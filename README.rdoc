@@ -1,5 +1,7 @@
 BlacklightUnapi: unAPI provider plugin for Blacklight
 
+= This plugin has been incorporated into core Blacklight as of 2011-03-29 (Blacklight 2.8) and will no longer be maintained as a separate plugin.
+
 = Description
 
 The BlacklightUnapi plugin provides an unapi endpoint for Blacklight records. unAPI is a tiny HTTP API for the few basic operations necessary to copy discrete, identified content from any kind of web application.
