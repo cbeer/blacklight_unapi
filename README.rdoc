@@ -1,34 +1,26 @@
 BlacklightUnapi: unAPI provider plugin for Blacklight
 
-= This plugin has been incorporated into core Blacklight as of 2011-03-29 (Blacklight 2.8) and will no longer be maintained as a separate plugin.
-
 = Description
 
 The BlacklightUnapi plugin provides an unapi endpoint for Blacklight records. unAPI is a tiny HTTP API for the few basic operations necessary to copy discrete, identified content from any kind of web application.
 
 = Requirements
 
-A Rails app using the Blacklight plugin (tested against version 2.7).
+A Rails app using Blacklight >3.x.
 
 = Installation
 
-This is a plugin, not a gem (because the structure was copied from existing plugins; in theory, it should be possible to make this a gem in the future).
+Add
 
- A couple different ways to get the source into your vendor/plugins directory. 
+    gem "blacklight_highlight"
 
-Go into your application directory, and run: 
+to your Gemfile and run "bundle install".
 
-./script/plugin install git://github.com/cbeer/blacklight_unapi.git
-
-Later you can run ./script/plugin update blacklight_unapi if you like. 
-
-Requires git installed on your system. There are other ways to get the plugin in there too.
-
-OR
-cd $your_app/vendor/plugins
-git clone git://github.com/cbeer/blacklight_unapi.git 
+Then, run "rails generate blacklight_unapi" to install the unAPI configuration and hooks into the CatalogController. 
 
 = Configuration
+
+See ./config/initializers/blacklight_config for unAPI configuration options, where you can list the default set of document formats (which must be available for every document served). By default, this is only OAI Dublin Core.
 
 
 == Injection
@@ -46,8 +38,7 @@ to turn off all injection. The plugin will be completely non-functional if you d
 You can also turn off injection of individual components, which could be more useful:
    
   BlacklightUnapi.omit_inject = {
-    :autodiscovery_link => false,  
-    :controller_mixin => false
+    :routes => false,  
   }
 
 = Tests
