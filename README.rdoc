@@ -14,7 +14,7 @@ A Rails app using Blacklight >3.x.
 
 Add
 
-    gem "blacklight_highlight"
+    gem "blacklight_unapi"
 
 to your Gemfile and run "bundle install".
 
