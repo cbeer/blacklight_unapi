@@ -36,7 +36,7 @@ module BlacklightUnapi::ControllerExtension
   # in this plugin that accesses Blacklight.config, single point
   # of contact. 
   def unapi_config   
-    Blacklight.config[:unapi] || {}
+    self.blacklight_config[:unapi] || {}
   end
 
   def unapi_default_export_formats
