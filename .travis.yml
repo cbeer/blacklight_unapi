@@ -1,0 +1,15 @@
+notifications:
+  email: false
+
+rvm:
+  - 2.1.0
+
+notifications:
+  irc: "irc.freenode.org#blacklight"
+  email:
+      - blacklight-commits@googlegroups.com
+
+env:
+  global:
+    - JRUBY_OPTS="-J-Xms512m -J-Xmx1024m"
+    - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
