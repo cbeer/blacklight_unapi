@@ -18,7 +18,7 @@ Add
 
 to your Gemfile and run "bundle install".
 
-Then, run "rails generate blacklight_unapi" to install the unAPI configuration and hooks into the CatalogController. 
+Then, run "rails generate blacklight_unapi:install" to install the unAPI configuration and hooks into the CatalogController. 
 
 = Configuration
 
@@ -26,7 +26,7 @@ See ./config/initializers/blacklight_config for unAPI configuration options, whe
 
 Out of the box, only the OAI Dublin Core XML format is advertised as it can be be automatically generated from the Blacklight "semantic fields" configuration. Other common export formats must be defined within the Blacklight configuration.  Implementors SHOULD customize this list using the [[Blacklight.config[:unapi]|https://github.com/projectblacklight/blacklight/blob/master/config/initializers/blacklight_config.rb#L263]] hash, which is formatted as the [Blacklight::Solr::Document#export_formats](https://github.com/projectblacklight/blacklight/blob/master/lib/blacklight/solr/document.rb#L155) output, e.g.:
 
-    config[:unapi] = {
+    config.unapi = {
       'oai_dc_xml' => { :content_type => 'text/xml' }, 
       'marc' => { :content_type => 'application/marc' },
       'jpg' => { :content_type => 'image/jpg' }  
@@ -68,9 +68,6 @@ Provides a list of object formats available for all objects.
 === /catalog/unapi?id=IDENTIFIER 
 
 Provides a list of object formats available for the object identified by "IDENTIFIER". The object formats are generated from the Document Extension Framework [Blacklight::Solr::Document#export_formats](https://github.com/projectblacklight/blacklight/blob/master/lib/blacklight/solr/document.rb#L155).
-
-In the future, Blacklight may provide mechanisms within the Document Extension Framework for filtering the list of object formats (see [CODEBASE-301](http://jira.projectblacklight.org/jira/browse/CODEBASE-301)). In the meantime, to filter this list of object formats, implementors are encouraged to override [./app/views/catalog/unapi.xml.builder](https://github.com/projectblacklight/blacklight/blob/master/app/views/catalog/unapi.xml.builder) (or CatalogController#unapi) locally.
-
 
   <?xml version="1.0" encoding="UTF-8"?> 
   <formats id="u1"> 

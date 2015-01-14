@@ -6,11 +6,9 @@ Gem::Specification.new do |s|
   s.version = BlacklightUnapi::VERSION
   s.platform = Gem::Platform::RUBY
   s.authors = ["Chris Beer"]
-  s.email = ["chris_beer@wgbh.org"]
+  s.email = ["chris@cbeer.info"]
   s.homepage    = "http://projectblacklight.org/"
   s.summary = "Blacklight unapi plugin"
-
-  s.rubyforge_project = "blacklight"
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
@@ -18,7 +16,15 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
 
-  s.add_dependency "rails", "~> 3.0"
-  s.add_dependency "blacklight", "> 3.2"
+  s.add_dependency "rails"
+  s.add_dependency "blacklight", "~> 5.0"
+  
+  s.add_development_dependency "bundler", "~> 1.5"
+  s.add_development_dependency "rake"
+  s.add_development_dependency "rspec-rails", "~> 3.1"
+  s.add_development_dependency "jettywrapper"
+  s.add_development_dependency "engine_cart"
+  s.add_development_dependency "capybara"
+  s.add_development_dependency "poltergeist", ">= 1.5.0"
 end
 
