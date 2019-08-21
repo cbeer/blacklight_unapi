@@ -12,10 +12,10 @@ module BlacklightUnapi::ControllerExtension
     @format = params[:format]
 
     if params[:id]
-      @response, @document = get_solr_response_for_doc_id params[:id]
+      @response, @document = search_service.fetch(params[:id])
       @export_formats = @document.export_formats
     end
-	 	
+
     if params[:format]
       respond_to do |format|
         format.all do
@@ -26,7 +26,6 @@ module BlacklightUnapi::ControllerExtension
       end
     else
       render template: 'catalog/formats.xml'
-    end 	
+    end
   end
-
 end
